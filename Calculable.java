@@ -19,13 +19,13 @@ import java.math.BigDecimal;
 
 public interface Calculable {
 	
-	 BigDecimal calculateCost();
+	 BigDecimal calculateCost(int quantity);
 	 
 	 static Calculable withApple(Calculable calculable) {
 	        return new Calculable() {
 	            @Override
-	            public BigDecimal calculateCost() {
-	                return calculable.calculateCost().add(new BigDecimal(".20"));
+	            public BigDecimal calculateCost(int quantity) {
+	                return calculable.calculateCost().add(new BigDecimal(".20") * quantity);
 	            }
 	        };
 	  }
@@ -34,8 +34,8 @@ public interface Calculable {
 	 static Calculable withOrange(Calculable calculable) {
 	        return new Calculable() {
 	            @Override
-	            public BigDecimal calculateCost() {
-	                return calculable.calculateCost().add(new BigDecimal(".5"));
+	            public BigDecimal calculateCost(int quantity) {
+	                return calculable.calculateCost().add(new BigDecimal(".5") * quantity);
 	            }
 	        };
 	  }
@@ -43,8 +43,8 @@ public interface Calculable {
 	 static Calculable withWaterMelon(Calculable calculable) {
 	        return new Calculable() {
 	            @Override
-	            public BigDecimal calculateCost() {
-	                return calculable.calculateCost().add(new BigDecimal(".8"));
+	            public BigDecimal calculateCost(int quantity) {
+	                return calculable.calculateCost().add(new BigDecimal(".8") * quantity);
 	            }
 	        };
 	  }
