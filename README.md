@@ -1,2 +1,2 @@
 # dev-works
-Repository for hosting my development work
+Repository for hosting my development works
