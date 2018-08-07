@@ -25,7 +25,7 @@ public interface Calculable {
 	        return new Calculable() {
 	            @Override
 	            public BigDecimal calculateCost(int quantity) {
-	                return calculable.calculateCost().add(new BigDecimal(".20") * quantity);
+			    return calculable.calculateCost(add(new BigDecimal(".20") * (quantity - quantity/2)));
 	            }
 	        };
 	  }
@@ -44,7 +44,7 @@ public interface Calculable {
 	        return new Calculable() {
 	            @Override
 	            public BigDecimal calculateCost(int quantity) {
-	                return calculable.calculateCost().add(new BigDecimal(".8") * quantity);
+	                return calculable.calculateCost(add(new BigDecimal(".80") * (quantity - quantity/3)));
 	            }
 	        };
 	  }
