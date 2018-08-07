@@ -1,4 +1,4 @@
-package com.rbc.testexercise;
+package com.bnp.testexercise;
 
 import java.math.BigDecimal;
 import java.util.function.Function;
