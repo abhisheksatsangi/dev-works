@@ -21,29 +21,29 @@ public interface Calculable {
 	
 	 BigDecimal calculateCost(int quantity);
 	 
-	 static Calculable withApple(Calculable calculable) {
+	 static Calculable withApple(Calculable calculable, int quantity) {
 	        return new Calculable() {
 	            @Override
-	            public BigDecimal calculateCost(int quantity) {
+	            public BigDecimal calculateCost() {
 			    return calculable.calculateCost(add(new BigDecimal(".20") * (quantity - quantity/2)));
 	            }
 	        };
 	  }
 
 	 
-	 static Calculable withOrange(Calculable calculable) {
+	 static Calculable withOrange(Calculable calculable, int quantity) {
 	        return new Calculable() {
 	            @Override
-	            public BigDecimal calculateCost(int quantity) {
+	            public BigDecimal calculateCost() {
 	                return calculable.calculateCost().add(new BigDecimal(".5") * quantity);
 	            }
 	        };
 	  }
 	 
-	 static Calculable withWaterMelon(Calculable calculable) {
+	 static Calculable withWaterMelon(Calculable calculable, int quantity) {
 	        return new Calculable() {
 	            @Override
-	            public BigDecimal calculateCost(int quantity) {
+	            public BigDecimal calculateCost() {
 	                return calculable.calculateCost(add(new BigDecimal(".80") * (quantity - quantity/3)));
 	            }
 	        };
