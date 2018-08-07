@@ -1,4 +1,4 @@
-package com.rbc.test;
+package com.bnp.test;
 
 import static org.junit.Assert.*;
 
@@ -6,15 +6,15 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import com.rbc.testexercise.Basket;
-import com.rbc.testexercise.BasketCostDecorator;
-import com.rbc.testexercise.Calculable;
+import com.bnp.testexercise.Basket;
+import com.bnp.testexercise.BasketCostDecorator;
+import com.bnp.testexercise.Calculable;
 
 public class BasketCostCalculatorTest {
 
 	@Test
 	public void testFullBasket() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withApple, Calculable::withBanana,Calculable::withOrange,Calculable::withPeach,Calculable::withLemon),new BigDecimal(32));
+		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withApple,Calculable::withOrange,Calculable::withWaterMelon),new BigDecimal(32));
 	}
 	
 	@Test
@@ -28,49 +28,25 @@ public class BasketCostCalculatorTest {
 	}
 	
 	@Test
-	public void testBasketWithOnlyPeaches() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withPeach),BigDecimal.TEN);
+	public void testBasketWithOnlyWaterMelons() {
+		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withWaterMelon),BigDecimal.TEN);
 	}
 	
-	@Test
-	public void testBasketWithOnlyBananas() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withBanana),BigDecimal.TEN);
-	}
-	
-	@Test
-	public void testBasketWithOnlyLemons() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withLemon),BigDecimal.TEN);
-	}
-	
-	@Test
-	public void testBasketWithOrangesAndPeaches() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withOrange,Calculable::withPeach),new BigDecimal(11));
-	}
-	
-	@Test
-	public void testBasketWithOrangesAndLemons() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withOrange,Calculable::withLemon),new BigDecimal(11));
-	}
 	
 	@Test
 	public void testBasketWithOrangesAndApples() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withOrange,Calculable::withApple),new BigDecimal(2));
+		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withOrange,Calculable::withApples),new BigDecimal(11));
+	}
+	
+	@Test
+	public void testBasketWithOrangesAndWaterMelons() {
+		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withOrange,Calculable::withWaterMelons),new BigDecimal(11));
+	}
+	
+	@Test
+	public void testBasketWithApplesAndWaterMelons() {
+		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withApples,Calculable::withWaterMelons),new BigDecimal(2));
 	}
 
-	
-	@Test
-	public void testBasketWithBananasOrangesAndApples() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withBanana,Calculable::withOrange,Calculable::withApple),new BigDecimal(12));
-	}
-	
-	@Test
-	public void testBasketWithPeachesOrangesAndApples() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withPeach,Calculable::withOrange,Calculable::withApple),new BigDecimal(12));
-	}
-	
-	@Test
-	public void testBasketWithLemonOrangesAndApples() {
-		assertEquals(BasketCostDecorator.calculate(new Basket(),Calculable::withLemon,Calculable::withOrange,Calculable::withApple),new BigDecimal(12));
-	}
 
 }
