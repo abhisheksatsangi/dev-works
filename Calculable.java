@@ -3,50 +3,99 @@ package com.bnp.testexercise;
 import java.math.BigDecimal;
 
 
+
+
+
 /**
+
  * Returns the cost of an individual fruit items expressed as a BigDecimal. 
+
  * The cost of the individual fruits within the basket is returned via the means
+
  * of static methods defined in the interface. The cost of individual fruit items
+
  * have been assigned as per the test instructions, for example apples have a cost of 20 pence whereas Oranges
+
  * have a cost of 50p.The static methods simply implement the interface method for
+
  * calculating the cost of an individual fruit item.
+
  * 
- * @param  Calculable  a calculable instance.
+
+ * @param  Calculable,  a calculable instance.
+
  * @return the cost, expressed as a BigDecimal, of the individual fruit item.    
+
  * 
+
  */
 
 
+
+
+
 public interface Calculable {
+
 	
-	 BigDecimal calculateCost(int quantity);
+
+	 BigDecimal calculateCost();
+
 	 
+
 	 static Calculable withApple(Calculable calculable, int quantity) {
+
 	        return new Calculable() {
+
 	            @Override
+
 	            public BigDecimal calculateCost() {
-			    return calculable.calculateCost(add(new BigDecimal(".20") * (quantity - quantity/2)));
+
+			    return calculable.calculateCost().add(new BigDecimal(".20").multiply(new BigDecimal((quantity - quantity/2))));
+
 	            }
+
 	        };
+
+	  }
+
+
+
+	 
+
+	 static Calculable withOrange(Calculable calculable, int quantity) {
+
+	        return new Calculable() {
+
+	            @Override
+
+	            public BigDecimal calculateCost() {
+
+	                return calculable.calculateCost().add(new BigDecimal(".5").multiply(new BigDecimal(quantity)));
+
+	            }
+
+	        };
+
 	  }
 
 	 
-	 static Calculable withOrange(Calculable calculable, int quantity) {
-	        return new Calculable() {
-	            @Override
-	            public BigDecimal calculateCost() {
-	                return calculable.calculateCost().add(new BigDecimal(".5") * quantity);
-	            }
-	        };
-	  }
-	 
+
 	 static Calculable withWaterMelon(Calculable calculable, int quantity) {
+
 	        return new Calculable() {
+
 	            @Override
+
 	            public BigDecimal calculateCost() {
-	                return calculable.calculateCost(add(new BigDecimal(".80") * (quantity - quantity/3)));
+
+	                return calculable.calculateCost().add(new BigDecimal(".80").multiply(new BigDecimal((quantity - quantity/3))));
+
 	            }
+
 	        };
+
 	  }
+
 	 
+
 }
